@@ -249,8 +249,13 @@ h1 span {
 }
 
 @keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-7px); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
 }
 
 .ticker {
@@ -277,7 +282,9 @@ h1 span {
 }
 
 @keyframes scroll {
-  to { transform: translateX(-50%); }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .section {
@@ -563,7 +570,8 @@ footer a {
     margin: 0 auto;
   }
 
-  .mascot, .orb {
+  .mascot,
+  .orb {
     width: min(100%, 285px);
   }
 
@@ -642,7 +650,9 @@ footer a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation: none !important;
     scroll-behavior: auto !important;
     transition: none !important;
@@ -701,7 +711,7 @@ footer a {
 
       <img
         class="mascot"
-        src="buck-mascot.jpeg"
+        src="C1762617-0557-4466-AFF1-2C56DD4F9003.jpeg"
         alt="Official Buck mascot: a cartoon ten-dollar bill with a stitched patch and sneakers"
       >
 
