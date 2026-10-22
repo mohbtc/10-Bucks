@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7efd9">
+<meta name="description" content="The Ten Buck Club — The $10 Experiment. Built with $10. Powered by attention.">
+<title>The Ten Buck Club — The $10 Experiment</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #f7efd9;
+  --paper: #fff9e9;
+  --ink: #142d27;
+  --sage: #9eb49a;
+  --forest: #536f5c;
+  --lime: #d8e6a7;
+  --muted: #667568;
+  --line: rgba(20,45,39,.19);
+  --mono: "DM Mono", monospace;
+  --sans: "Space Grotesk", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+a {
+  color: inherit;
+}
+
+.wrap {
+  width: min(1120px, calc(100% - 36px));
+  margin-inline: auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: -.04em;
+  font-size: 14px;
+}
+
+.brand-mark {
+  width: 11px;
+  height: 11px;
+  background: var(--forest);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #536f5c1c;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  font: 10px var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a:not(.nav-btn) {
+  opacity: .75;
+}
+
+.nav-btn {
+  border: 1px solid var(--ink);
+  padding: 9px 12px;
+  border-radius: 4px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 15px;
+  padding: 28px 0 25px;
+}
+
+.eyebrow {
+  font: 10px var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: #6d916c;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #6d916c22;
+}
+
+h1 {
+  font-size: clamp(48px, 7.2vw, 87px);
+  line-height: .91;
+  letter-spacing: -.085em;
+  margin: 0;
+  max-width: 630px;
+}
+
+h1 span {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink);
+}
+
+.hero-copy {
+  font-size: 15px;
+  line-height: 1.55;
+  color: #4e6253;
+  max-width: 450px;
+  margin: 17px 0 19px;
+}
+
+.hero-copy strong {
+  color: var(--ink);
+}
+
+.buttons {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  padding: 12px 14px;
+  font: 10px var(--mono);
+  text-transform: uppercase;
+  transition: transform .18s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-dark {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.micro {
+  font: 9px var(--mono);
+  letter-spacing: .035em;
+  color: var(--muted);
+  margin: 13px 0 0;
+}
+
+.art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 325px;
+}
+
+.orb {
+  position: absolute;
+  width: min(100%, 350px);
+  aspect-ratio: 1;
+  background: var(--sage);
+  border-radius: 50%;
+  transform: rotate(-7deg);
+}
+
+.orb::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid #142d2730;
+  border-radius: 50%;
+}
+
+.mascot {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 350px);
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 12px 10px #142d2718);
+  animation: bob 5s ease-in-out infinite;
+}
+
+.tag {
+  position: absolute;
+  z-index: 2;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 8px 10px;
+  box-shadow: 3px 3px 0 var(--ink);
+  font: 9px var(--mono);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.tag-a {
+  right: 0;
+  top: 35px;
+  transform: rotate(5deg);
+}
+
+.tag-b {
+  left: 0;
+  bottom: 28px;
+  transform: rotate(-5deg);
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+.ticker {
+  background: var(--ink);
+  color: var(--cream);
+  overflow: hidden;
+  padding: 11px 0;
+}
+
+.ticker-line {
+  display: flex;
+  gap: 23px;
+  white-space: nowrap;
+  width: max-content;
+  font: 10px var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  animation: scroll 28s linear infinite;
+}
+
+.ticker b {
+  color: var(--lime);
+  font-weight: 400;
+}
+
+@keyframes scroll {
+  to { transform: translateX(-50%); }
+}
+
+.section {
+  padding: 43px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 21px;
+}
+
+.kicker {
+  font: 10px var(--mono);
+  letter-spacing: .12em;
+  color: var(--forest);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: clamp(31px, 4.4vw, 51px);
+  line-height: .97;
+  letter-spacing: -.07em;
+  margin: 0;
+}
+
+.intro {
+  max-width: 370px;
+  margin: 0;
+  color: #58695a;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.card {
+  background: #fff9e988;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 18px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.num {
+  font: 9px var(--mono);
+  color: var(--forest);
+  letter-spacing: .08em;
+}
+
+.card h3 {
+  font-size: 21px;
+  letter-spacing: -.05em;
+  margin: 20px 0 7px;
+}
+
+.card p {
+  font-size: 12px;
+  line-height: 1.55;
+  color: #5b6a5d;
+  margin: 0;
+}
+
+.statement {
+  margin-top: 10px;
+  background: var(--sage);
+  padding: 20px 22px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.statement p {
+  font-size: clamp(19px, 2.7vw, 30px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -.055em;
+  margin: 0;
+  max-width: 760px;
+}
+
+.statement span {
+  font-size: 40px;
+  opacity: .65;
+}
+
+.status-head {
+  margin-bottom: 18px;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.status {
+  padding: 18px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+
+.label {
+  font: 9px var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--muted);
+}
+
+.value {
+  font-size: 21px;
+  letter-spacing: -.05em;
+  font-weight: 700;
+  margin: 11px 0 6px;
+}
+
+.status p {
+  font-size: 11px;
+  line-height: 1.55;
+  color: #617064;
+  margin: 0;
+}
+
+.pending {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #bd914b;
+  border-radius: 50%;
+  margin-right: 7px;
+  vertical-align: middle;
+}
+
+.warning {
+  display: grid;
+  grid-template-columns: 31px 1fr;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 16px;
+  background: #f4e5c3;
+  border: 1px solid #c9ad75;
+  border-radius: 5px;
+}
+
+.warn-icon {
+  width: 27px;
+  height: 27px;
+  border: 1px solid #96763b;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 13px var(--mono);
+}
+
+.warning h3 {
+  font-size: 15px;
+  margin: 1px 0 5px;
+}
+
+.warning p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #66573b;
+  margin: 0;
+}
+
+.warning strong {
+  color: #44391f;
+}
+
+.join {
+  margin-top: 20px;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 24px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.join h3 {
+  font-size: clamp(26px, 3.5vw, 38px);
+  line-height: .98;
+  letter-spacing: -.065em;
+  margin: 0 0 8px;
+}
+
+.join p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #c2d0bd;
+  max-width: 540px;
+  margin: 0;
+}
+
+.join .btn {
+  flex-shrink: 0;
+  border-color: var(--lime);
+  background: var(--lime);
+  color: var(--ink);
+}
+
+footer {
+  padding: 17px 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font: 9px var(--mono);
+  text-transform: uppercase;
+}
+
+footer a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .5s, transform .5s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 700px) {
+  .wrap {
+    width: calc(100% - 28px);
+  }
+
+  header {
+    padding: 12px 0;
+  }
+
+  nav {
+    gap: 10px;
+  }
+
+  nav a:not(.nav-btn) {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 24px 0 17px;
+    gap: 0;
+  }
+
+  h1 {
+    font-size: clamp(53px, 13vw, 77px);
+  }
+
+  .hero-copy {
+    font-size: 14px;
+    margin: 14px 0 16px;
+  }
+
+  .art {
+    min-height: 270px;
+    max-width: 330px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .mascot, .orb {
+    width: min(100%, 285px);
+  }
+
+  .tag-a {
+    right: 0;
+    top: 20px;
+  }
+
+  .tag-b {
+    left: 0;
+    bottom: 18px;
+  }
+
+  .section {
+    padding: 33px 0;
+  }
+
+  .section-head {
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .intro {
+    margin-top: 12px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .card {
+    min-height: 0;
+    padding: 16px;
+  }
+
+  .card h3 {
+    margin: 15px 0 6px;
+  }
+
+  .statement {
+    padding: 17px;
+  }
+
+  .statement span {
+    font-size: 28px;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .status {
+    padding: 15px;
+  }
+
+  .value {
+    margin: 7px 0 4px;
+  }
+
+  .join {
+    padding: 20px;
+    display: block;
+    margin-top: 14px;
+  }
+
+  .join .btn {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  footer {
+    gap: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+
+  .fade {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="wrap">
+  <a class="brand" href="#top">
+    <span class="brand-mark"></span>
+    THE TEN BUCK CLUB
+  </a>
+
+  <nav aria-label="Main navigation">
+    <a href="#experiment">The experiment</a>
+    <a href="#status">Token status</a>
+    <a class="nav-btn" href="https://x.com/The10DollarExp" target="_blank" rel="noopener noreferrer">Follow Buck ↗</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="wrap hero">
+    <div>
+      <div class="eyebrow">
+        <span class="dot"></span>
+        THE $10 EXPERIMENT
+      </div>
+
+      <h1>MEET BUCK.<br><span>HE'S GOT</span><br>TEN DOLLARS.</h1>
+
+      <p class="hero-copy">
+        A scrappy ten-dollar bill with a folded corner, a stitched patch,
+        and a sense of humour.
+        <strong>Built with $10. Powered by attention.</strong>
+      </p>
+
+      <div class="buttons">
+        <a class="btn btn-dark" href="#experiment">What's the experiment? ↓</a>
+        <a class="btn" href="https://x.com/The10DollarExp" target="_blank" rel="noopener noreferrer">Follow on X ↗</a>
+      </div>
+
+      <p class="micro">NO PRESALE · NO FAKE ROADMAP · NO PROMISES OF RETURNS</p>
+    </div>
+
+    <div class="art" aria-label="Buck, the Ten Buck Club mascot">
+      <div class="orb"></div>
+
+      <img
+        class="mascot"
+        src="buck-mascot.jpeg"
+        alt="Official Buck mascot: a cartoon ten-dollar bill with a stitched patch and sneakers"
+      >
+
+      <div class="tag tag-a">Small bill.<br>Big character.</div>
+      <div class="tag tag-b">Planned creator buy: up to $10</div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-line">
+      <span>BUILT WITH $10</span><b>✳</b>
+      <span>POWERED BY ATTENTION</span><b>✳</b>
+      <span>NO TOKEN LAUNCHED YET</span><b>✳</b>
+      <span>YOU DON'T NEED TO BUY</span><b>✳</b>
+
+      <span>BUILT WITH $10</span><b>✳</b>
+      <span>POWERED BY ATTENTION</span><b>✳</b>
+      <span>NO TOKEN LAUNCHED YET</span><b>✳</b>
+      <span>YOU DON'T NEED TO BUY</span><b>✳</b>
+    </div>
+  </div>
+
+  <section class="section" id="experiment">
+    <div class="wrap">
+
+      <div class="section-head fade">
+        <div>
+          <div class="kicker">01 / The idea</div>
+          <h2>A ten-dollar start.<br>An open experiment.</h2>
+        </div>
+
+        <p class="intro">
+          The Ten Buck Club is about starting small and seeing what
+          attention can do. No grand claims. Just a simple idea,
+          shared in public.
+        </p>
+      </div>
+
+      <div class="cards">
+
+        <article class="card fade">
+          <span class="num">01 — THE START</span>
+          <div>
+            <h3>Built with $10.</h3>
+            <p>
+              The planned initial creator buy is up to $10.
+              Network costs are separate. That's the stated starting
+              point—not a promise of future results.
+            </p>
+          </div>
+        </article>
+
+        <article class="card fade">
+          <span class="num">02 — THE ATTENTION</span>
+          <div>
+            <h3>Community, not pressure.</h3>
+            <p>
+              Follow Buck, share the experiment, ask questions,
+              or simply watch. You don't need to buy anything
+              to join in.
+            </p>
+          </div>
+        </article>
+
+        <article class="card fade">
+          <span class="num">03 — THE PRINCIPLE</span>
+          <div>
+            <h3>Keep it transparent.</h3>
+            <p>
+              No presale. No fake roadmap. No promises of returns.
+              The project should be clear about what's real
+              and what's still ahead.
+            </p>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="statement fade">
+        <p>
+          Buck has ten dollars, one stitched patch, and absolutely
+          no interest in pretending to be a billion-dollar operation.
+        </p>
+        <span>✳</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="status">
+    <div class="wrap">
+
+      <div class="status-head fade">
+        <div class="kicker">02 / Read this first</div>
+        <h2>Before you trust a ticker,<br>check what's official.</h2>
+      </div>
+
+      <div class="status-grid">
+
+        <article class="status fade">
+          <div class="label">Planned creator buy</div>
+          <div class="value">Up to $10</div>
+          <p>
+            Network costs are separate. This is a plan, not
+            confirmation that a buy has happened.
+          </p>
+        </article>
+
+        <article class="status fade">
+          <div class="label">Token launch</div>
+          <div class="value"><span class="pending"></span>Not launched</div>
+          <p>No token has been launched by this project yet.</p>
+        </article>
+
+        <article class="status fade">
+          <div class="label">Official contract</div>
+          <div class="value">Not published</div>
+          <p>
+            The contract will be published here only after verification.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="warning fade">
+        <div class="warn-icon">!</div>
+
+        <div>
+          <h3>Existing TENBUCK tokens are not this project.</h3>
+          <p>
+            Other tokens may already use the name or ticker
+            <strong>TENBUCK</strong>. Do not assume they are affiliated
+            with The Ten Buck Club. The official contract will appear
+            here only after verification. Until then, there is no
+            official contract address to share.
+          </p>
+        </div>
+      </div>
+
+      <div class="join fade">
+        <div>
+          <h3>Just here for Buck?</h3>
+          <p>
+            That's enough. Follow the updates on X, keep an eye on
+            the experiment, and join the conversation. You don't need
+            to buy anything.
+          </p>
+        </div>
+
+        <a class="btn" href="https://x.com/The10DollarExp" target="_blank" rel="noopener noreferrer">
+          Follow @The10DollarExp ↗
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span class="brand"><span class="brand-mark"></span>THE TEN BUCK CLUB</span>
+  <span>Built with $10. Powered by attention.</span>
+  <a href="https://x.com/The10DollarExp" target="_blank" rel="noopener noreferrer">@The10DollarExp ↗</a>
+  <span>Nothing here promises financial returns.</span>
+</footer>
+
+<script>
+const fades = document.querySelectorAll('.fade');
+
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  fades.forEach(element => observer.observe(element));
+} else {
+  fades.forEach(element => element.classList.add('show'));
+}
+</script>
+
+</body>
+</html>
